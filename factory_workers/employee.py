@@ -25,6 +25,8 @@ class Employee:
 
     @name.setter
     def name(self, value):
+        if not isinstance(value, str) or not value.strip():
+            raise ValueError("Name must be a non-empty string.")
         self._name = value
 
     @property
@@ -33,6 +35,8 @@ class Employee:
 
     @employee_number.setter
     def employee_number(self, value):
+        if not isinstance(value, (int, str)):
+            raise TypeError("Employee number must be an int or string.")
         self._employee_number = value
 
     @property
@@ -41,6 +45,8 @@ class Employee:
 
     @hire_date.setter
     def hire_date(self, value):
+        if not isinstance(value, (str, tuple)):
+            raise TypeError("Hire date must be a string or tuple.")
         self._hire_date = value
 
     # ---- Display ----

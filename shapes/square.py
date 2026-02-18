@@ -11,15 +11,15 @@ from rectangle import Rectangle
 class Square(Rectangle):
     """Represents a square shape (special case of Rectangle)."""
 
-    def __init__(self, s, n="Square"):
+    def __init__(self, side, name="Square"):
         """
-        Preconditions: s is a positive float (side length),
-                       n is a string (shape name)
+        Preconditions: side is a positive float (side length),
+                       name is a string (shape name)
         Postconditions: Square object initialized with area calculated
         """
-        self._side = s
-        super().__init__(s, s, n)
-        self.name = n  # ensure the name is set in BasicShape
+        self._side = side
+        super().__init__(side, side, name)
+        self.name = name  # ensure the name is set in BasicShape
 
     @property
     def side(self):
@@ -29,10 +29,13 @@ class Square(Rectangle):
     @side.setter
     def side(self, value):
         """
-        Setter for _side. Automatically recalculates area by
-        updating both length and width in the parent Rectangle.
-        Preconditions: value must be positive
+        Setter for _side. Validates positive value and automatically
+        recalculates area by updating both length and width.
         """
+        if not isinstance(value, (int, float)):
+            raise TypeError("Side must be a number.")
+        if value <= 0:
+            raise ValueError("Side must be positive.")
         self._side = value
         self._length = value
         self._width = value

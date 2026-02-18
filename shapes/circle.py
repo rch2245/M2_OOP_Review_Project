@@ -11,18 +11,18 @@ from basic_shape import BasicShape
 class Circle(BasicShape):
     """Represents a circle shape."""
 
-    def __init__(self, x, y, r, n="Circle"):
+    def __init__(self, x_center, y_center, radius, name="Circle"):
         """
-        Preconditions: x, y are floats (center coordinates),
-                       r is a positive float (radius),
-                       n is a string (shape name)
+        Preconditions: x_center, y_center are floats (center coordinates),
+                       radius is a positive float,
+                       name is a string (shape name)
         Postconditions: Circle object initialized with area calculated
         """
         super().__init__()
-        self._x_center = x
-        self._y_center = y
-        self._radius = r
-        self._name = n
+        self._x_center = x_center
+        self._y_center = y_center
+        self._radius = radius
+        self._name = name
         self.calc_area()
 
     def calc_area(self):
@@ -39,7 +39,9 @@ class Circle(BasicShape):
 
     @x_center.setter
     def x_center(self, value):
-        """Setter for _x_center."""
+        """Setter for _x_center. Validates that value is a number."""
+        if not isinstance(value, (int, float)):
+            raise TypeError("x_center must be a number.")
         self._x_center = value
 
     @property
@@ -49,7 +51,9 @@ class Circle(BasicShape):
 
     @y_center.setter
     def y_center(self, value):
-        """Setter for _y_center."""
+        """Setter for _y_center. Validates that value is a number."""
+        if not isinstance(value, (int, float)):
+            raise TypeError("y_center must be a number.")
         self._y_center = value
 
     @property
@@ -60,9 +64,13 @@ class Circle(BasicShape):
     @radius.setter
     def radius(self, value):
         """
-        Setter for _radius. Automatically recalculates area.
-        Preconditions: value must be positive
+        Setter for _radius. Validates positive value and
+        automatically recalculates area.
         """
+        if not isinstance(value, (int, float)):
+            raise TypeError("Radius must be a number.")
+        if value <= 0:
+            raise ValueError("Radius must be positive.")
         self._radius = value
         self.calc_area()
 

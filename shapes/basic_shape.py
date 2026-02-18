@@ -24,7 +24,11 @@ class BasicShape(ABC):
 
     @area.setter
     def area(self, value):
-        """Setter for _area."""
+        """Setter for _area. Validates that area is non-negative."""
+        if not isinstance(value, (int, float)):
+            raise TypeError("Area must be a number.")
+        if value < 0:
+            raise ValueError("Area cannot be negative.")
         self._area = value
 
     @property
@@ -34,7 +38,9 @@ class BasicShape(ABC):
 
     @name.setter
     def name(self, value):
-        """Setter for _name."""
+        """Setter for _name. Validates that name is a string."""
+        if not isinstance(value, str):
+            raise TypeError("Name must be a string.")
         self._name = value
 
     @abstractmethod

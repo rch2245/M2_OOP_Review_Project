@@ -14,8 +14,32 @@ class PoliceOfficer:
         Preconditions: name and badge_number are strings
         Postconditions: PoliceOfficer object initialized
         """
-        self.name = name
-        self.badge_number = badge_number
+        self._name = name
+        self._badge_number = badge_number
+
+    @property
+    def name(self):
+        """Getter for _name."""
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """Setter for _name. Validates that name is a non-empty string."""
+        if not isinstance(value, str) or not value.strip():
+            raise ValueError("Name must be a non-empty string.")
+        self._name = value
+
+    @property
+    def badge_number(self):
+        """Getter for _badge_number."""
+        return self._badge_number
+
+    @badge_number.setter
+    def badge_number(self, value):
+        """Setter for _badge_number. Validates that badge number is a non-empty string."""
+        if not isinstance(value, str) or not value.strip():
+            raise ValueError("Badge number must be a non-empty string.")
+        self._badge_number = value
 
     def inspect_car(self, parked_car, parking_meter):
         """
@@ -34,7 +58,7 @@ class PoliceOfficer:
 
     def __str__(self):
         """Returns a string representation of the officer."""
-        return f"  Officer: {self.name}, Badge: {self.badge_number}"
+        return f"  Officer: {self._name}, Badge: {self._badge_number}"
 
 
 # ---- Unit Tests ----
