@@ -32,6 +32,14 @@ class Circle(BasicShape):
         """
         self._area = math.pi * self._radius ** 2
 
+    def __str__(self):
+        """Returns a user-friendly string representation."""
+        return f"{self._name}: Center=({self._x_center}, {self._y_center}), Radius={self._radius}, Area={self._area:.5f}"
+
+    def __repr__(self):
+        """Returns a developer-friendly string representation."""
+        return f"Circle({self._x_center!r}, {self._y_center!r}, {self._radius!r}, {self._name!r})"
+
     @property
     def x_center(self):
         """Getter for _x_center."""

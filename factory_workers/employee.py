@@ -51,14 +51,22 @@ class Employee:
 
     # ---- Display ----
 
+    def __str__(self):
+        """Returns a user-friendly string representation."""
+        return (f"  Name: {self._name}\n"
+                f"  Employee Number: {self._employee_number}\n"
+                f"  Hire Date: {self._hire_date}")
+
+    def __repr__(self):
+        """Returns a developer-friendly string representation."""
+        return f"Employee({self._name!r}, {self._employee_number!r}, {self._hire_date!r})"
+
     def print_employee(self):
         """
         Preconditions: None
         Postconditions: Displays all employee attributes to console
         """
-        print(f"  Name: {self._name}")
-        print(f"  Employee Number: {self._employee_number}")
-        print(f"  Hire Date: {self._hire_date}")
+        print(self.__str__())
 
 
 # ---- Unit Tests ----

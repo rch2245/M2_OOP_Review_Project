@@ -21,6 +21,14 @@ class Square(Rectangle):
         super().__init__(side, side, name)
         self.name = name  # ensure the name is set in BasicShape
 
+    def __str__(self):
+        """Returns a user-friendly string representation."""
+        return f"{self._name}: Side={self._side}, Area={self._area:.5f}"
+
+    def __repr__(self):
+        """Returns a developer-friendly string representation."""
+        return f"Square({self._side!r}, {self._name!r})"
+
     @property
     def side(self):
         """Getter for _side."""

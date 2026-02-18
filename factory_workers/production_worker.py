@@ -47,15 +47,24 @@ class ProductionWorker(Employee):
 
     # ---- Display ----
 
+    def __str__(self):
+        """Returns a user-friendly string representation."""
+        shift_name = "Day" if self._shift == 1 else "Night"
+        return (f"{super().__str__()}\n"
+                f"  Shift: {shift_name}\n"
+                f"  Hourly Pay Rate: ${self._hourly_pay_rate:.2f}")
+
+    def __repr__(self):
+        """Returns a developer-friendly string representation."""
+        return (f"ProductionWorker({self._name!r}, {self._employee_number!r}, "
+                f"{self._hire_date!r}, {self._shift!r}, {self._hourly_pay_rate!r})")
+
     def print_production_worker(self):
         """
         Preconditions: None
         Postconditions: Displays employee info plus shift and pay rate
         """
-        self.print_employee()
-        shift_name = "Day" if self._shift == 1 else "Night"
-        print(f"  Shift: {shift_name}")
-        print(f"  Hourly Pay Rate: ${self._hourly_pay_rate:.2f}")
+        print(self.__str__())
 
 
 # ---- Unit Tests ----

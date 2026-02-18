@@ -43,6 +43,14 @@ class BasicShape(ABC):
             raise TypeError("Name must be a string.")
         self._name = value
 
+    def __str__(self):
+        """Returns a user-friendly string representation."""
+        return f"{self._name}: Area = {self._area:.5f}"
+
+    def __repr__(self):
+        """Returns a developer-friendly string representation."""
+        return f"BasicShape(name={self._name!r}, area={self._area!r})"
+
     @abstractmethod
     def calc_area(self):
         """

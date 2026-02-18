@@ -47,14 +47,23 @@ class ShiftSupervisor(Employee):
 
     # ---- Display ----
 
+    def __str__(self):
+        """Returns a user-friendly string representation."""
+        return (f"{super().__str__()}\n"
+                f"  Annual Salary: ${self._annual_salary:,.2f}\n"
+                f"  Annual Production Bonus: ${self._annual_production_bonus:,.2f}")
+
+    def __repr__(self):
+        """Returns a developer-friendly string representation."""
+        return (f"ShiftSupervisor({self._name!r}, {self._employee_number!r}, "
+                f"{self._hire_date!r}, {self._annual_salary!r}, {self._annual_production_bonus!r})")
+
     def print_shift_supervisor(self):
         """
         Preconditions: None
         Postconditions: Displays employee info plus salary and bonus
         """
-        self.print_employee()
-        print(f"  Annual Salary: ${self._annual_salary:,.2f}")
-        print(f"  Annual Production Bonus: ${self._annual_production_bonus:,.2f}")
+        print(self.__str__())
 
 
 # ---- Unit Tests ----

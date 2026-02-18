@@ -29,6 +29,14 @@ class Rectangle(BasicShape):
         """
         self._area = self._length * self._width
 
+    def __str__(self):
+        """Returns a user-friendly string representation."""
+        return f"{self._name}: Length={self._length}, Width={self._width}, Area={self._area:.5f}"
+
+    def __repr__(self):
+        """Returns a developer-friendly string representation."""
+        return f"Rectangle({self._length!r}, {self._width!r}, {self._name!r})"
+
     @property
     def length(self):
         """Getter for _length."""

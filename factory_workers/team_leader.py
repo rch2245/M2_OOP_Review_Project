@@ -61,15 +61,26 @@ class TeamLeader(ProductionWorker):
 
     # ---- Display ----
 
+    def __str__(self):
+        """Returns a user-friendly string representation."""
+        return (f"{super().__str__()}\n"
+                f"  Monthly Bonus: ${self._monthly_bonus:,.2f}\n"
+                f"  Required Training Hours: {self._required_training_hours}\n"
+                f"  Attended Training Hours: {self._attended_training_hours}")
+
+    def __repr__(self):
+        """Returns a developer-friendly string representation."""
+        return (f"TeamLeader({self._name!r}, {self._employee_number!r}, "
+                f"{self._hire_date!r}, {self._shift!r}, {self._hourly_pay_rate!r}, "
+                f"{self._monthly_bonus!r}, {self._required_training_hours!r}, "
+                f"{self._attended_training_hours!r})")
+
     def print_team_leader(self):
         """
         Preconditions: None
         Postconditions: Displays production worker info plus team leader data
         """
-        self.print_production_worker()
-        print(f"  Monthly Bonus: ${self._monthly_bonus:,.2f}")
-        print(f"  Required Training Hours: {self._required_training_hours}")
-        print(f"  Attended Training Hours: {self._attended_training_hours}")
+        print(self.__str__())
 
 
 # ---- Unit Tests ----
