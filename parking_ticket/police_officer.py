@@ -60,6 +60,10 @@ class PoliceOfficer:
         """Returns a string representation of the officer."""
         return f"  Officer: {self._name}, Badge: {self._badge_number}"
 
+    def __repr__(self):
+        """Returns a developer-friendly string representation."""
+        return f"PoliceOfficer({self._name!r}, {self._badge_number!r})"
+
 
 # ---- Unit Tests ----
 if __name__ == "__main__":

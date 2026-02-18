@@ -44,6 +44,10 @@ class ParkedCar:
                 f"  License: {self.license_number}\n"
                 f"  Minutes Parked: {self._minutes_parked}")
 
+    def __repr__(self):
+        """Returns a developer-friendly string representation."""
+        return f"ParkedCar({self.make!r}, {self.model!r}, {self.color!r}, {self.license_number!r}, {self._minutes_parked!r})"
+
 
 # ---- Unit Tests ----
 if __name__ == "__main__":

@@ -55,6 +55,10 @@ class ParkingTicket:
             f"{'=' * 40}"
         )
 
+    def __repr__(self):
+        """Returns a developer-friendly string representation."""
+        return f"ParkingTicket({self.car!r}, {self.officer_name!r}, {self.illegal_minutes!r})"
+
 
 # ---- Unit Tests ----
 if __name__ == "__main__":

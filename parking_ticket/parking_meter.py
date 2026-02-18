@@ -35,6 +35,10 @@ class ParkingMeter:
         """Returns a string representation of the parking meter."""
         return f"  Minutes Purchased: {self._minutes_purchased}"
 
+    def __repr__(self):
+        """Returns a developer-friendly string representation."""
+        return f"ParkingMeter({self._minutes_purchased!r})"
+
 
 # ---- Unit Tests ----
 if __name__ == "__main__":
